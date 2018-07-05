@@ -58,12 +58,12 @@ credits=0
 for each in ${result[*]:750}
 do
 	if [ -z "$last_score" ]; then
-		score=$(echo $each | grep -P -o "(?<=&zcj=)\d.*(?=',)")
+		score=$(echo "$each" | grep -P -o "(?<=&zcj=)\d.*(?=',)")
 		if [ -n "$score" ]; then
 			last_score="$score"
 		fi
 	else
-		credit=$(echo $each | grep -P -o "\d.*")
+		credit=$(echo "$each" | grep -P -o "\d.*")
 		if [ -n "$credit" ]; then
 			grades=$(echo "$grades+$credit*$(scoreToGrade $last_score)" | bc)
 			credits=$(echo "$credits+$credit" | bc)
