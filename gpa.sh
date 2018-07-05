@@ -47,10 +47,10 @@ if [ $cas_code -ne 200 ]; then
 	exit 1
 fi
 
-ORIGIN_IFS="$IFS"
+ORIGINAL_IFS="$IFS"
 IFS="</td>"
 result=($(curl --silent --cookie /tmp/cascookies --cookie-jar /tmp/cascookies -L "$scoreurl"))
-IFS="$ORIGIN_IFS"
+IFS="$ORIGINAL_IFS"
 
 grades=0
 credits=0
